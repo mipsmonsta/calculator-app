@@ -128,6 +128,108 @@ main {
 
 /***********************************************/
 
+
+/************Calculator Keys********************/
+
+.bottom {
+    width: 300px;
+    padding: 1%;
+}
+.compound-btns-container {
+    width: 100%;
+    display: grid;
+    gap: 0.5em;
+    grid-template-areas: "seven eight nine del"
+    "four five six plus"
+    "one two three minus"
+    "dot zero divide multiply"
+    "reset reset equal equal";
+}
+
+.btns {
+    text-align: center;
+    width: auto;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+
+}
+
+#btns-7 {
+    grid-area: seven;
+}
+
+#btns-8 {
+    grid-area: eight;
+}
+
+#btns-9 {
+    grid-area: nine;
+}
+
+#btns-del {
+    grid-area: del;
+}
+
+#btns-4 {
+    grid-area: four;
+}
+
+#btns-5 {
+    grid-area: five;
+}
+
+#btns-6 {
+    grid-area: six;
+}
+
+#btns-plus {
+    grid-area: plus;
+}
+
+#btns-one {
+    grid-area: one;
+}
+
+#btns-two {
+    grid-area: two;
+}
+
+#btns-three {
+    grid-area: three;
+}
+
+#btns-minus {
+    grid-area: minus;
+}
+
+#btns-dot {
+    grid-area: dot;
+}
+
+#btns-0 {
+    grid-area: zero;
+}
+
+#btns-divide {
+    grid-area: divide;
+}
+
+#btns-multiply {
+    grid-area: multiply;
+}
+
+#btns-reset {
+    grid-area: reset;
+}
+
+#btns-equal {
+    grid-area: equal;
+
+}
+
+
+
 .attribution {
     font-size: 11px;
     text-align: center;
