@@ -1,3 +1,5 @@
+let buffer = ["0"];
+
 document.body.addEventListener("change", function (e) {
   let target = e.target;
 
@@ -16,6 +18,8 @@ document.body.addEventListener("change", function (e) {
 
 document.body.addEventListener("click", (e) => {
   let target = e.target;
+  key = document.querySelector(`#${e.target.id}`).textContent;
+  let last = buffer[buffer.length - 1];
 
   switch (target.id) {
     case "btns-9":
@@ -27,17 +31,88 @@ document.body.addEventListener("click", (e) => {
     case "btns-3":
     case "btns-2":
     case "btns-1":
-    case "btns-dot":
     case "btns-0":
-    case "btns-divide":
-    case "btns-multiply":
-    case "btns-reset":
-    case "btns-equal":
-    case "btns-del":
-      let element = document.querySelector(`#${e.target.id}`);
-      console.log(`Calculator Btns Clicked ${element.textContent}`);
+      if (buffer[0] == "0" && buffer.length == 1) {
+        buffer.pop();
+      }
+      buffer.push(key);
+      break;
+    case "btns-dot":
+      if (
+        last === "." ||
+        last === "*" ||
+        last === "/" ||
+        last === "+" ||
+        last === "-"
+      ) {
+        buffer.pop();
+      }
 
+      // if (!buffer.some((element) => element === ".")) {
+      //   buffer.push(".");
+      // }
+      buffer.push(".");
+
+      break;
+
+    case "btns-divide":
+      if (last === "*" || last === "/" || last === "+" || last === "-") {
+        buffer.pop();
+      }
+
+      buffer.push("/");
+
+      break;
+
+    case "btns-plus":
+      if (last === "*" || last === "/" || last === "+" || last === "-") {
+        buffer.pop();
+      }
+
+      buffer.push("+");
+      break;
+
+    case "btns-minus":
+      if (last === "*" || last === "/" || last === "+" || last === "-") {
+        buffer.pop();
+      }
+
+      buffer.push("-");
+
+      break;
+    case "btns-multiply":
+      if (last === "*" || last === "/" || last === "+" || last === "-") {
+        buffer.pop();
+      }
+
+      buffer.push("*");
+
+      break;
+
+    case "btns-del":
+      if (buffer.length > 1) {
+        buffer.pop();
+      } else {
+        buffer = ["0"];
+      }
+      break;
+    case "btns-reset":
+      buffer = ["0"];
+      break;
+
+    case "btns-equal":
+      let combine = buffer.join("");
+      try {
+        result = eval(combine).toString();
+        buffer = [result];
+      } catch (err) {
+        buffer = ["0"];
+      } finally {
+      }
+      break;
     default:
       break;
   }
+
+  console.log(buffer);
 });
