@@ -18,8 +18,11 @@ document.body.addEventListener("change", function (e) {
 
 document.body.addEventListener("click", (e) => {
   let target = e.target;
-  key = document.querySelector(`#${e.target.id}`).textContent;
+  if (e.target.id) {
+    key = document.querySelector(`#${e.target.id}`).textContent;
+  }
   let last = buffer[buffer.length - 1];
+  let displayElement = document.querySelector(".display");
 
   switch (target.id) {
     case "btns-9":
@@ -102,6 +105,7 @@ document.body.addEventListener("click", (e) => {
 
     case "btns-equal":
       let combine = buffer.join("");
+
       try {
         result = eval(combine).toString();
         buffer = [result];
@@ -114,5 +118,6 @@ document.body.addEventListener("click", (e) => {
       break;
   }
 
-  console.log(buffer);
+  replaceMultiplyString = buffer.join("").replace(/\*/g, "x");
+  displayElement.textContent = replaceMultiplyString;
 });

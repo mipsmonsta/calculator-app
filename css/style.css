@@ -129,6 +129,20 @@ main {
 /***********************************************/
 
 
+/************Display****************************/
+
+
+.display {
+    background-color: aqua;
+    font-size: 2rem;
+    width: 290px;
+    height: auto;
+    text-align: end;
+    padding-inline: 5px;
+    overflow: hidden;
+
+}
+
 /************Calculator Keys********************/
 
 .bottom {
