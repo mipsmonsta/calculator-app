@@ -42,24 +42,32 @@ document.body.addEventListener("click", (e) => {
     case "btns-0":
       if (buffer[0] == "0" && buffer.length == 1) {
         buffer.pop();
+        buffer.push(key);
+      } else if (isNaN(last) == false) {
+        /*last is a num, so merge with new num*/
+        num = buffer.pop();
+        buffer.push(num + key);
+      } else {
+        /*here, last are operators*/
+        buffer.push(key);
       }
-      buffer.push(key);
       break;
     case "btns-dot":
-      if (
-        last === "." ||
-        last === "*" ||
-        last === "/" ||
-        last === "+" ||
-        last === "-"
-      ) {
+      if (last === "*" || last === "/" || last === "+" || last === "-") {
         buffer.pop();
+      }
+
+      //handling if last is number and already with period
+      if (last.indexOf(".") !== -1) {
+        //console.log("Already dot");
+        break;
       }
 
       // if (!buffer.some((element) => element === ".")) {
       //   buffer.push(".");
       // }
-      buffer.push(".");
+      num = buffer.pop();
+      buffer.push(num + "."); /*merge num and dot*/
 
       break;
 
@@ -124,6 +132,6 @@ document.body.addEventListener("click", (e) => {
   }
 
   replaceMultiplyString = buffer.join("").replace(/\*/g, "x");
-
+  console.log(buffer);
   displayElement.textContent = replaceMultiplyString;
 });
