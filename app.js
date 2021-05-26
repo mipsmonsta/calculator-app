@@ -124,5 +124,6 @@ document.body.addEventListener("click", (e) => {
   }
 
   replaceMultiplyString = buffer.join("").replace(/\*/g, "x");
+
   displayElement.textContent = replaceMultiplyString;
 });
