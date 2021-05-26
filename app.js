@@ -126,6 +126,9 @@ document.body.addEventListener("click", (e) => {
       try {
         result = eval(combine).toString();
         buffer = [result];
+        displayResult = result.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        displayElement.textContent = displayResult;
+        return; /*special handling to display commas for computed number result*/
       } catch (err) {
         buffer = ["0"];
       } finally {
