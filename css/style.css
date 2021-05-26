@@ -1,6 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
 
-:root {
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container[data-theme="one"] {
   --t1-mainbackground: hsl(222, 26%, 31%);
   --t1-toggle-keypad-background: hsl(223, 31%, 20%);
   --t1-screen-background: hsl(224, 36%, 15%);
@@ -14,28 +26,60 @@
   --t1-key-white-shadow: hsl(28, 16%, 65%);
 
   --t1-text-blue: hsl(221, 14%, 31%);
-  --t1-text-White: hsl(0, 0, 100%);
+  --t1-text-display: white;
+  --t1-text-white: white;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.container[data-theme="two"] {
+  --t1-mainbackground: hsl(0, 0%, 90%);
+  --t1-toggle-keypad-background: hsl(0, 5%, 81%);
+  --t1-screen-background: hsl(0, 0%, 93%);
+  --t1-key-blue-background: rgb(26, 161, 158);
+  --t1-key-blue-shadow: hsl(35, 11%, 61%);
+
+  --t1-key-orange-background-toggle: hsl(25, 98%, 40%);
+  --t1-key-red-shadow: hsl(25, 99%, 27%);
+
+
+  --t1-key-white-background: hsl(30, 25%, 89%);
+  --t1-key-white-shadow: hsl(28, 16%, 65%);
+
+  --t1-text-blue: hsl(60, 10%, 19%);
+  --t1-text-display: hsl(60, 10%, 19%);
+  --t1-text-white: hsl(60, 10%, 19%);
+
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
+.container[data-theme="three"] {
+  --t1-mainbackground: hsl(268, 75%, 9%);
+  --t1-toggle-keypad-background: hsl(268, 71%, 12%);
+  --t1-screen-background: hsl(268, 71%, 12%);
+  --t1-key-blue-background: hsl(268, 47%, 21%);
+  --t1-key-blue-shadow: hsl(290, 70%, 36%);
+
+  --t1-key-orange-background-toggle: hsl(176, 100%, 44%);
+  --t1-key-red-shadow: hsl(177, 92%, 70%);
+
+
+  --t1-key-white-background: hsl(281, 89%, 26%);
+  --t1-key-white-shadow: hsl(285, 91%, 52%);
+
+  --t1-text-blue: hsl(52, 100%, 62%);
+  --t1-text-display: hsl(52, 100%, 62%);
+  --t1-text-white: white;
+
 }
+
+
 
 main {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Spartan", sans-serif;
-  background-color: var(--t1-mainbackground);
+  background-color: var(--t1-mainbackground); /*themeable*/
   padding: 10px;
 }
 
@@ -46,7 +90,7 @@ main {
 }
 
 .item {
-  color: white;
+  color: var(--t1-text-white); 
   font-size: 0.6rem;
 }
 
@@ -79,7 +123,7 @@ main {
 }
 
 .item-title {
-  color: white;
+  color: var(--t1-text-white);
   font-size: 0.8rem;
   grid-column: 1 / 2;
   grid-row: 2 / -1;
@@ -105,7 +149,7 @@ main {
 
 .toggle_radio {
   position: relative;
-  background: var(--t1-toggle-keypad-background);
+  background: var(--t1-toggle-keypad-background); /*themeable*/
   margin: 0 auto;
   overflow: hidden;
   padding: 0 0;
@@ -140,7 +184,7 @@ main {
 .toggle_option_slider {
   /*display: none;*/
   /*background: red;*/
-  background: var(--t1-key-orange-background-toggle);
+  background: var(--t1-key-orange-background-toggle); /*themeable*/
   width: 20px;
   height: 20px;
   position: absolute;
@@ -166,8 +210,8 @@ main {
 /************Display****************************/
 
 .display {
-  color: white;
-  background-color: var(--t1-screen-background);
+  background-color: var(--t1-screen-background); /*themeable*/
+  color: var(--t1-text-display);
   font-size: 1.5rem;
   width: 300px;
   height: auto;
@@ -181,7 +225,7 @@ main {
 
 .bottom {
   margin-top: 1rem;
-  background-color: var(--t1-toggle-keypad-background);
+  background-color: var(--t1-toggle-keypad-background); /*themeable*/
   border-radius: 3px;
 
   width: 300px;
@@ -202,14 +246,15 @@ main {
 }
 
 .btns {
+  color: var(--t1-text-blue);
   font-size: 1rem;
-  background-color: var(--t1-key-white-background);
+  background-color: var(--t1-key-white-background); /*themeable*/
   text-align: center;
   padding: 0.5rem;
   width: auto;
   height: auto;
   border-radius: 3px;
-  box-shadow: 1px 1px var(--t1-key-white-shadow);
+  box-shadow: 0px 1px var(--t1-key-white-shadow); /*themeable*/
 }
 
 #btns-7 {
@@ -225,9 +270,9 @@ main {
 }
 
 #btns-del {
-  color: white;
-  background-color: var(--t1-key-blue-background);
-  box-shadow: 1px 1px var(--t1-key-blue-shadow);
+  color: var(--t1-text-white);
+  background-color: var(--t1-key-blue-background); /*themeable*/
+  box-shadow: 0px 1px var(--t1-key-blue-shadow);
   grid-area: del;
 }
 
@@ -280,17 +325,22 @@ main {
 }
 
 #btns-reset {
-  color: white;
+  color: var(--t1-text-white);
   grid-area: reset;
-  color: white;
-  background-color: var(--t1-key-blue-background);
-  box-shadow: 1px 1px var(--t1-key-blue-shadow);
+  background-color: var(--t1-key-blue-background); /*themeable*/
+  box-shadow: 0px 1px var(--t1-key-blue-shadow);
 }
 
+
+
 #btns-equal {
-  background: var(--t1-key-orange-background-toggle);
-  box-shadow: 1px 1px var(--t1-key-red-shadow);
+  background: var(--t1-key-orange-background-toggle); /*themeable*/
+  box-shadow: 0px 1px var(--t1-key-red-shadow);
   grid-area: equal;
+}
+
+.container[data-theme="three"] #btns-equal { /* using descendant combinator selector */
+  color: black;
 }
 
 .attribution {

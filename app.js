@@ -2,16 +2,21 @@ let buffer = ["0"];
 
 document.body.addEventListener("change", function (e) {
   let target = e.target;
+  wrapperElement = document.body.querySelector(".container");
 
   switch (target.id) {
     case "first_toggle":
       console.log("first");
+      wrapperElement.setAttribute("data-theme", "one");
+
       break;
     case "second_toggle":
       console.log("second");
+      wrapperElement.setAttribute("data-theme", "two");
       break;
     case "third_toggle":
       console.log("third");
+      wrapperElement.setAttribute("data-theme", "three");
       break;
   }
 });
