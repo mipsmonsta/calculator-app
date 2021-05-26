@@ -46,7 +46,11 @@ document.body.addEventListener("click", (e) => {
       } else if (isNaN(last) == false) {
         /*last is a num, so merge with new num*/
         num = buffer.pop();
-        buffer.push(num + key);
+        if (num === "0") {
+          buffer.push(key); //prevent the case of ... 04
+        } else {
+          buffer.push(num + key);
+        }
       } else {
         /*here, last are operators*/
         buffer.push(key);
