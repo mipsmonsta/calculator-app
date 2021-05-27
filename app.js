@@ -62,7 +62,9 @@ document.body.addEventListener("click", (e) => {
       }
 
       //handling if last is number and already with period
-      if (last.indexOf(".") !== -1) {
+      //re-establish last so that we prevent case of add . if preceding is "2.1+"
+      last = buffer[buffer.length - 1]
+      if (last && last.indexOf(".") !== -1) {
         //console.log("Already dot");
         break;
       }
